@@ -1,8 +1,80 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>hello bitch</title>
-  </head>
-  <body>
-    <h1>hello bitch</h1>
-  </body>
+<head>
+
+
+  <meta charset="utf-8">
+
+  <title>NightSofa - Just relax</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="/scripts/libs/jquery.autocomplete.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.stickit/0.8.0/backbone.stickit.min.js"></script>
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.0/animate.min.css" rel="stylesheet">
+  <link href="//vjs.zencdn.net/4.6/video-js.css" rel="stylesheet">
+  <link href="/styles/style.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+
+  <script id="playerTemplate" type="text/template">
+    <p class="title"><%= title %></p>
+    <video poster='https://docs.google.com/vt?id=<%= videoID %>&s=' class='wideRatio vjs-big-play-centered player video-js vjs-default-skin' width='auto' height='auto' preload='none' controls class='videoPlayer'>
+      <% _.each(streams, function(stream){ %>
+        <source src='<%= stream.url %>&c=web&cver=html5' type='<%= stream.type %>' data-res='<%= stream.quality %>'>
+      <% }); %>
+    </video>
+  </script>
+
+  <script id="indexTemplate" type="text/template">
+    <div id="indexView">
+      <div class="searchContainer"></div>
+      <div class="results">
+        <p class="placeholder"><span class="logo"></span></p>
+        <div class="data"></div>
+      </div>
+      <div class="catalogContainer"><span class="loading">Loading catalog...</span></div>
+      <footer id="footer">
+          <p><span class="logo"></span><a class="githublogo" href="http://github.com/nightsofa/nightsofa" target="_blank">nightsofa</a></p>
+          <p><strong>NightSofa</strong> is an OpenSource project made with &lt;3 from Uruguay promoting Art. <br>Contribute, copy, remix, hack it as much as you wish. <a href="/tos.html">Terms Of Service</a>. 2014.</p>
+      </footer>
+    </div>
+  </script>
+
+  <script id="searchTemplate" type="text/template">
+    <div class="search">
+      <form id="magic_form"><input type="text" autocomplete="off" placeholder="<%= placeholder %>" class="magic_field" value="<%= query %>"></form>
+    </div>
+  </script>
+
+  <script id="movieTemplate" type="text/template">
+    <figure class="movie">
+    <div class="movieWrapper">
+      <div class="poster"><a class="search" href="#" style="background-image:url(<%= coverSrc %>);">
+        <div class="title">
+          <h1><%= title %></h1>
+          <h2><div class="stars-container" style="width:<%= rating*10 %>%;"><div class="stars"></div></div><span class="rating"><%= rating %></span></h2>
+        </div>
+      </a></div>
+      <figcaption class="description">
+        <div class="col-right"><span class="year"><%= year %></span><br><a style="background-image:url(<%= smallCoverSrc %>);" class="trailer wideRatio" rel="noreferrer" href="<%= trailerURL %>">Trailer</a></div>
+        <div class="col-left"><span class="director"><%= director %></span><br><span class="shortPlot"><%= shortPlot %></span></div>
+      </figcaption>
+    </div>
+    </figure>
+  </script>
+
+  <script src="//vjs.zencdn.net/4.6/video.js"></script>
+  <script src="https://cdn.rawgit.com/dominic-p/videojs-resolution-selector/fc9c44ef8b4a3df6350b18c3105e65b32a00339a/video-quality-selector.js" ></script>
+  <script src="/scripts/app.min.js"></script>
+
+</body>
 </html>
