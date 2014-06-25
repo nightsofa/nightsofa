@@ -40,7 +40,7 @@ NightSofa do not store any media. We take advantage of masive popular public clo
 - **Google Drive**: Movie "backup" files storage
 - **YTS.re API**: Popular titles catalog
 - **IMDB API**: Search autocomplete
-- **WhateverOrigin.org API**: Retreive Google Drive raw streams
+- **WhateverOrigin.org API**: Retrieve Google Drive raw streams
 
 
 
