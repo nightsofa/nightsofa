@@ -79,8 +79,8 @@ module.exports = function(grunt) {
 
   grunt.registerTask('js', ['coffee', 'uglify', 'jshint']);
   grunt.registerTask('css', ['less', 'cssmin']);
-  grunt.registerTask('default', ['js', 'css']);
-  grunt.registerTask('golive', ['default', 'copy', 'gh-pages']);
+  grunt.registerTask('default', ['js', 'css', 'copy']);
+  grunt.registerTask('golive', ['default', 'gh-pages']);
 
 
 };

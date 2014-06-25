@@ -480,6 +480,7 @@ class App.Views.SearchResults extends Backbone.View
     console.log 'Views:SearchResults:onReset', arguments[1].previousModels 
     _.each oldVideos, (video) =>
       @cleanVideo video
+    @onChange()
     
   onError: ->
     console.log 'Views:SearchResults::onError', arguments[0], arguments
