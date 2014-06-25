@@ -14,17 +14,25 @@ Clone this repo and use grunt to build the app.
 
 ````$ grunt default```
 
-## TODO
 
+
+## TODO
+Main next tasks are:
 - Refine UI/UX design.
+- Mutiple browser supports (currently optimized for chrome)
+- Mobile version. (now crashing)
+- Much more (look and create new issues)
+
 
 ## How do we do it?
 
 NightSofa do not store any media. We take advantage of masive popular public cloud-services that allow people to store and share their buckups freely. We just find them.
 
+
 ### Tech
 
 - HTML5 + JS/CoffeeScript + CSS/LESS
+
 
 ### APIs (v0.0.1)
 
