@@ -8,6 +8,13 @@ We believe in **Design**, simplicty and ease of use.
 You are invited tell us your crazy workaround hacky ideas! This is just starting.
 
 
+## Contribute
+
+Clone this repo and use grunt to build the app.
+
+````$ grunt default```
+
+
 ## How do we do it?
 
 NightSofa do not store any media. We take advantage of masive popular public cloud-services that allow people to store and share their buckups freely. We just find them.
@@ -16,8 +23,8 @@ NightSofa do not store any media. We take advantage of masive popular public clo
 
 - HTML5 + JS/CoffeeScript + CSS/LESS
 
-### APIs
-v0.0.1
+### APIs (v0.0.1)
+
 - **Google Search API**: Find the movie "backup" files
 - **Google Drive**: Movie "backup" files storage
 - **YTS.re API**: Popular titles catalog
