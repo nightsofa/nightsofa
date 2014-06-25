@@ -32,6 +32,8 @@ NightSofa do not store any media. We take advantage of masive popular public clo
 ### Tech
 
 - HTML5 + JS/CoffeeScript + CSS/LESS
+- **JS Framework**: Backbone.js
+- **Video Player**: Video.js
 
 
 ### APIs (v0.0.1)
