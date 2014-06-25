@@ -14,6 +14,9 @@ Clone this repo and use grunt to build the app.
 
 ````$ grunt default```
 
+## TODO
+
+- Refine UI/UX design.
 
 ## How do we do it?
 
