@@ -8,16 +8,16 @@ We believe in **Design**, simplicty and ease of use.
 You are invited tell us your crazy workaround hacky ideas! This is just starting.
 
 
-#How do we do it?
+## How do we do it?
 
 NightSofa do not store any media. We take advantage of masive popular public cloud-services that allow people to store and share their buckups freely. We just find them.
 
-##Tech
+### Tech
 
 - HTML5 + JS/CoffeeScript + CSS/LESS
 
-###APIs
-
+### APIs
+v0.0.1
 - **Google Search API**: Find the movie "backup" files
 - **Google Drive**: Movie "backup" files storage
 - **YTS.re API**: Popular titles catalog
@@ -26,19 +26,19 @@ NightSofa do not store any media. We take advantage of masive popular public clo
 
 
 
-##Versions
+## Versions
 
 We are in the very most *alpha* version. v0.0.1
 
 
 
-##Who are you?
+## Who are you?
 
 Geeks from Uruguay & Argentina. You are hearing a lot from us lately, right? :) 
 
 
 
-##License
+## License
 
 ***Contribute, copy, remix, hack it as much as you wish.***
 
