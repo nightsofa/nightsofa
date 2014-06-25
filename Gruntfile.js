@@ -7,7 +7,7 @@ module.exports = function(grunt) {
     coffee: {
       compile: {
         files: {
-          'scripts/app.js': 'src/app.coffee'
+          'scripts/app.js': 'scripts/app.coffee'
         }
       }
     },
@@ -16,7 +16,7 @@ module.exports = function(grunt) {
       production: {
         files: {
           'scripts/libs/jquery.autocomplete.min.js' : ['scripts/libs/jquery.autocomplete.js'],
-          'scripts/app.min.js' : ['scripts/app.js']
+          'dist/scripts/app.min.js' : ['scripts/app.js']
         }
       }
     },
@@ -36,7 +36,7 @@ module.exports = function(grunt) {
 
         },
         files: {
-          'styles/style.css': ['src/style.less']
+          'styles/style.css': ['styles/style.less']
         }
       }
     },
@@ -44,10 +44,27 @@ module.exports = function(grunt) {
     cssmin: {
     	compress: {
     		files: {
-    			'styles/style.min.css' : ['styles/style.css']
+    			'dist/styles/style.min.css' : ['styles/style.css']
     		}
     	}
-    }
+    },
+    
+    copy: {
+      main: {
+        files: [
+          { expand: true, src: ['scripts/libs/*.min.js'], dest: 'dist/' },          
+          { expand: true, src: ['*.html'], dest: 'dist/', filter: 'isFile' },
+          { expand: true, src: ['images/*'], dest: 'dist/' }
+        ]
+      }
+    },
+    
+    'gh-pages': {
+      options: {
+        base: 'dist'
+      },
+      src: '**'
+    }    
 
   });
 
@@ -57,10 +74,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-coffee');
+  grunt.loadNpmTasks('grunt-gh-pages');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   grunt.registerTask('js', ['coffee', 'uglify', 'jshint']);
   grunt.registerTask('css', ['less', 'cssmin']);
   grunt.registerTask('default', ['js', 'css']);
+  grunt.registerTask('golive', ['default', 'copy', 'gh-pages']);
 
 
 };

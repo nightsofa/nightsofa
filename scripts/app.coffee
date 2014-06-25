@@ -30,7 +30,7 @@ window.App =
   Config:
     movieSearchURL: "https://www.google.com/uds/GwebSearch?key=notsupplied&v=1.0&safe=off&filter=0&gl=www.google.com&rsz=large&gss=.com&callback=?"
     movieDescriptionURL: "http://api.trakt.tv/movie/summary.json/515a27ba95fbd83f20690e5c22bceaff0dfbde7c"
-    movieStreamsURL: "http://anyorigin.com/dev/get/?url=https%3A//docs.google.com/get_video_info%3Fauthuser%3D%26docid%3D##VIDEOID##&callback=?"
+    movieStreamsURL: "http://whateverorigin.org/get?url=https%3A//docs.google.com/get_video_info%3Fauthuser%3D%26docid%3D##VIDEOID##&callback=?" #TODO &mobile=true when touch detected when modernizr added. 
     catalogURL: "https://yts.re/api/list.json"
     imdbSuggestionsURL: "http://sg.media-imdb.com/suggests/##FIRSTQUERYCHAR##/##QUERY##.json"
     searchQueryTemplate: "intitle:[##QUERY##] [mp4 | avi | mkv] -free -doc -pdf site:docs.google.com/file inurl:[preview OR edit]"
@@ -212,7 +212,7 @@ class App.Views.Catalog extends Backbone.View
     @listenTo @catalogCollection, 'reset', @onReset
 
     @catalogCollection.fetch
-      reset: true
+      reset: true # this shouldnd't be used
       data:
         limit: 50
         sort: 'seeds'
@@ -329,6 +329,10 @@ class App.Collections.SearchMovies extends Backbone.Collection
   search: (query) ->
     console.log 'Collections:SearchMovies::search ', query
 
+    if !query || query == "" ||  query == " " || query.length < 3
+      @reset()
+      return
+    
     googleQuery = App.Config.searchQueryTemplate.replace '##QUERY##', query
 
     @query = query
@@ -443,7 +447,7 @@ class App.Views.SearchMovie extends Backbone.View
 
 
 #
-# Search RESULTS
+# Search RESULTS (VIEW)
 #
 
 class App.Views.SearchResults extends Backbone.View
@@ -455,7 +459,7 @@ class App.Views.SearchResults extends Backbone.View
 
     @$dataEl = @$el.find '.data'
 
-    _.bindAll this, 'queryChange', 'renderVideo', 'cleanVideo', 'search', 'onAll', 'onChange', 'onSync', 'onError', 'onRequest'
+    _.bindAll this, 'queryChange', 'renderVideo', 'cleanVideo', 'search', 'onAll', 'onChange', 'onSync', 'onError', 'onRequest', 'onReset'
 
     @listenTo @searchBarModel, 'change:query', @queryChange
 
@@ -464,12 +468,19 @@ class App.Views.SearchResults extends Backbone.View
     @listenTo @searchCollection, 'remove', @cleanVideo
     @listenTo @searchCollection, 'all', @onAll
     @listenTo @searchCollection, 'add remove change', @onChange
+    @listenTo @searchCollection, 'reset', @onReset
     @listenTo @searchCollection, 'sync', @onSync
     @listenTo @searchCollection, 'error', @onError
     @listenTo @searchCollection, 'request', @onRequest
 
     @throlledSearch = _.debounce @search, 150
 
+  onReset: ->
+    oldVideos = arguments[1]?.previousModels 
+    console.log 'Views:SearchResults:onReset', arguments[1].previousModels 
+    _.each oldVideos, (video) =>
+      @cleanVideo video
+    
   onError: ->
     console.log 'Views:SearchResults::onError', arguments[0], arguments
     @$el.removeClass 'loading'
@@ -534,9 +545,7 @@ class App.Views.SearchResults extends Backbone.View
       $player?.remove()
     , 1000
 
-
   search: (query) ->
-
     console.log 'Views:SearchResults::Search', query
     @searchCollection.search query
 
