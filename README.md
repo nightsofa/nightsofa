@@ -1,7 +1,7 @@
 ![NIGHTSOFA](http://i.imgur.com/rcdZQ34.png)
 
 
-NightSofa is an experiment that aims to use fully public APIs to find public buckups of Movies and in the future other size-heavy media files. We push JS & HTML5 and creativity to the limits.
+NightSofa is an experiment that uses fully public APIs to find public buckups of Movies and in the future other size-heavy media files. We push JS & HTML5 and creativity to the limits.
 
 We believe in **Design**, simplicty and ease of use. 
 
