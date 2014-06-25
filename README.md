@@ -26,7 +26,7 @@ Main next tasks are:
 
 ## How do we do it?
 
-NightSofa does not store any media. We take advantage of masive popular public cloud-services that allow people to store and share their buckups freely. We just find them.
+NightSofa does not store any media. In fact we do not store anything. We don't have any persistant storage database of any kind. All the code runs in client-side. We take advantage of masive popular public cloud-services that allow people to store and share their buckups freely. We just find them.
 
 
 ### Tech
