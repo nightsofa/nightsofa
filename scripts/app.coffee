@@ -663,7 +663,7 @@ class App.Views.SearchBar extends Backbone.View
 
       onSelect: (sugesstion) ->
         console.log 'Views:SearchBar:AutoComplete::onSelect', arguments
-        searchFn this.value
+        searchFn sugesstion?.value
         #@model.set 'query', sugesstion.value
 
       dataType: 'jsonp'
@@ -672,8 +672,10 @@ class App.Views.SearchBar extends Backbone.View
 
   onMagicFieldBlurs: ->
     console.log 'Views:Search::onMagicFieldBlurs'
-    @$magicField?.autocomplete()?.hide()
-    @$magicField?.autocomplete()?.clear()
+    setTimeout =>
+      @$magicField?.autocomplete()?.hide()
+      @$magicField?.autocomplete()?.clear()
+    , 150
 
   render: ->
     console.log 'Views:Search::render', this
