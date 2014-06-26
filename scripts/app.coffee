@@ -57,7 +57,10 @@ class App.Models.CatalogMovieExtendedMetadata extends Backbone.Model
   url: ->
     base = @urlRoot || ""
     "#{base.replace(/([^\/])$/, '$1/')}#{encodeURIComponent(this.id)}?callback=?"
-
+    
+  parse: (res) ->
+    res.poster300 = res?.poster?.replace(/(\.(\w+))$/i,'-300$1')
+    res
 
 #
 # Catalog Movie (MODEL)
@@ -138,8 +141,8 @@ class App.Views.CatalogMovie extends Backbone.View
 
     trailerURL = if extendedMetadata? then extendedMetadata.get 'trailer' else null
 
-    coverUrl = if extendedMetadata? && extendedMetadata.get('images')?.poster? then extendedMetadata.get('images')?.poster else null
-
+    coverUrl = if extendedMetadata? then extendedMetadata.get('poster300') else ""
+      
     data =
       rating: @model.get 'MovieRating'
       coverSrc: coverUrl
