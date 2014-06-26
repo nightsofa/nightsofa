@@ -3,7 +3,7 @@
 
 [NightSofa](http://nightsofa.com) is an experiment that uses fully public APIs to find public buckups of Movies and in the future other size-heavy media files. We push JS & HTML5 and creativity to the limits.
 
-We believe in **Design**, simplicty and ease of use. 
+We believe in **Design**, simplicity and ease of use. 
 
 You are invited tell us your crazy workaround hacky ideas! This is just starting.
 
@@ -16,8 +16,8 @@ Clone this repo and use grunt to build the app.
 
 
 
-## TODO
-Main next tasks are:
+## ROADMAP
+
 - Refine UI/UX design.
 - Mutiple browser supports (currently optimized for chrome)
 - Mobile version. (now crashing)
@@ -41,6 +41,7 @@ NightSofa does not store any media. In fact we do not store anything. We don't h
 - **Google Search API**: Find the movie "backup" files
 - **Google Drive**: Movie "backup" files storage
 - **YTS.re API**: Popular titles catalog
+- **Trakt.tv API**: Titles metadata
 - **IMDB API**: Search autocomplete
 - **WhateverOrigin.org API**: Retrieve Google Drive raw streams
 
