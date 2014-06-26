@@ -16,7 +16,7 @@ Clone this repo and use grunt to build the app.
 
 
 
-## ROADMAP
+## Roadmap
 
 - Refine UI/UX design.
 - Mutiple browser supports (currently optimized for chrome)
