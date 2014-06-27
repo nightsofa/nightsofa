@@ -79,12 +79,12 @@
   <script src="/scripts/app.min.js"></script>
   
   <!-- TODO Move this to AMD when Modernizr.touch -->
-  <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.2/fastclick.min.js"></script>  
+<!--   <script src="//cdn.rawgit.com/ftlabs/fastclick/master/lib/fastclick.js"></script>  
   <script>
-    $(function() {
+    window.addEventListener('load', function() {
         FastClick.attach(document.body);
-    });  
-  </script>  
+    }, false); 
+  </script>   -->
   
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

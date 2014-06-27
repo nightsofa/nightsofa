@@ -540,14 +540,11 @@ class App.Views.SearchResults extends Backbone.View
 
     console.log 'Views:SearchResults::cleanVideo', searchMovieModel
 
-    # players = $('.player', @$dataEl)
-    #   _.each players, (player) ->
-    #   player.player?.dispose()
-
     $player = @$dataEl.find("#player_#{searchMovieModel.cid}")
     $player?.addClass 'unload'
     setTimeout =>
-      $player?.remove()
+      $player.find('.player')[0]?.player?.dispose()
+      #$player?.remove()
     , 1000
 
   search: (query) ->
