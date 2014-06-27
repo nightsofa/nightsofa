@@ -49,11 +49,23 @@ module.exports = function(grunt) {
     	}
     },
     
+    htmlmin: {
+      dist: {
+        options: {
+          removeComments: true,
+          collapseWhitespace: true
+        },
+        files: {
+          'dist/index.html': 'index.html',
+          'dist/tos.html': 'tos.html'
+        }
+      }
+    },
+    
     copy: {
       main: {
         files: [
-          { expand: true, src: ['scripts/libs/*.min.js'], dest: 'dist/' },          
-          { expand: true, src: ['*.html'], dest: 'dist/', filter: 'isFile' },
+          { expand: true, src: ['scripts/libs/*.min.js'], dest: 'dist/' },
           { expand: true, src: ['images/*'], dest: 'dist/' }
         ]
       }
@@ -76,10 +88,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-gh-pages');
   grunt.loadNpmTasks('grunt-contrib-copy');
-
+  grunt.loadNpmTasks('grunt-contrib-htmlmin');
+  
   grunt.registerTask('js', ['coffee', 'uglify', 'jshint']);
   grunt.registerTask('css', ['less', 'cssmin']);
-  grunt.registerTask('default', ['js', 'css', 'copy']);
+  grunt.registerTask('default', ['js', 'css', 'htmlmin', 'copy']);
   grunt.registerTask('golive', ['default', 'gh-pages']);
 
 

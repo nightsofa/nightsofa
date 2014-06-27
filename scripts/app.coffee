@@ -30,7 +30,7 @@ window.App =
   Config:
     movieSearchURL: "https://www.google.com/uds/GwebSearch?key=notsupplied&v=1.0&safe=off&filter=0&gl=www.google.com&rsz=large&gss=.com&callback=?"
     movieDescriptionURL: "http://api.trakt.tv/movie/summary.json/515a27ba95fbd83f20690e5c22bceaff0dfbde7c"
-    movieStreamsURL: "http://whateverorigin.org/get?url=https%3A//docs.google.com/get_video_info%3Fauthuser%3D%26docid%3D##VIDEOID##&callback=?" #TODO &mobile=true when touch detected when modernizr added. 
+    movieStreamsURL: "http://whateverorigin.org/get?url=https%3A//docs.google.com/get_video_info%3Fauthuser%3D%26docid%3D##VIDEOID##&mobile=##MOBILE##&callback=?"
     catalogURL: "https://yts.re/api/list.json"
     imdbSuggestionsURL: "http://sg.media-imdb.com/suggests/##FIRSTQUERYCHAR##/##QUERY##.json"
     searchQueryTemplate: "intitle:[##QUERY##] [mp4 | avi | mkv] -free -doc -pdf site:docs.google.com/file inurl:[preview OR edit]"
@@ -288,8 +288,9 @@ class App.Models.SearchMovie extends Backbone.Model
 
   urlRoot: App.Config.movieStreamsURL
   url: ->
+    isMobile = Modernizr?.touch || false
     base = @urlRoot || ""
-    "#{base.replace(/([^\/])$/, '$1')}".replace("##VIDEOID##", @id)
+    "#{base.replace(/([^\/])$/, '$1')}".replace("##VIDEOID##", @id).replace('##MOBILE##', isMobile)
 
   parse: (res) ->
     return res if res.id?

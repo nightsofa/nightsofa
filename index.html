@@ -10,6 +10,7 @@
 
   <link rel="shortcut icon" href="/images/favicon16.gif">
 
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="/scripts/libs/jquery.autocomplete.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
@@ -76,6 +77,14 @@
   <script src="//vjs.zencdn.net/4.6/video.js"></script>
   <script src="https://cdn.rawgit.com/dominic-p/videojs-resolution-selector/fc9c44ef8b4a3df6350b18c3105e65b32a00339a/video-quality-selector.js" ></script>
   <script src="/scripts/app.min.js"></script>
+  
+  <!-- TODO Move this to AMD when Modernizr.touch -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.2/fastclick.min.js"></script>  
+  <script>
+    $(function() {
+        FastClick.attach(document.body);
+    });  
+  </script>  
   
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
