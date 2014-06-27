@@ -544,7 +544,7 @@ class App.Views.SearchResults extends Backbone.View
     $player?.addClass 'unload'
     setTimeout =>
       $player.find('.player')[0]?.player?.dispose()
-      #$player?.remove()
+      $player?.remove()
     , 1000
 
   search: (query) ->
