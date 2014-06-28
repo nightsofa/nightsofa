@@ -233,7 +233,7 @@ a:visited:hover {
 
 
 .results{
-  margin: 0 15px;
+  margin: 0 0px;
   text-align: center;
   margin-bottom: 35px;
 
@@ -244,57 +244,74 @@ a:visited:hover {
     border: 0;
     width: 100%;
     position: relative;
-    overflow: hidden;
-
-    &:before {
-      content: "";
-      float: left;
-      padding-bottom: 0;
-    }
-
-    &:after{
-      content: "";
-      display: table;
-      clear: both;
-    }
+/*     overflow: hidden; */
+    text-align: left;
 
 
     .player{
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      left: 0;
-      top: 0;
-      right: 0;
-      bottom: 0;
+      //position: absolute;
+      //height: 100%;
+      //width: 100%;
+      //left: 0;
+      //top: 0;
+      //right: 0;
+      //bottom: 0;
       opacity: 0;
       overflow: hidden;
-      /* box-shadow: 2px 2px 3px 0px rgba(0,0,2,.25); */
+      
+      &:before {
+        content: "";
+        float: left;
+        padding-bottom: 0;
+      }
+      &:after{
+        content: "";
+        display: table;
+        clear: both;
+      }      
     }
 
     .title{
-      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      line-height: 1.5;
+      color: #666;
+      font-weight: bold;
+      font-size: .95em;
+      margin-bottom: 1em;
+      opacity: 0;
+      overflow: hidden;
+      z-index: 100;
+      margin-top: -2.5em;
+      margin-left: 15px;
     }
 
     margin-bottom: 0;
-
+    
     &.loaded{
-      margin-bottom: 50px;
-      &:before{
-        padding-bottom: 56.25%;
+      margin-bottom: 90px;
+      .title{
+        opacity: 1;
       }
       .player{
+        &:before{
+          padding-bottom: 56.25%;
+        }
         opacity: 1;
       }
     }
     &.loaded.unload{
       margin-bottom: 0;
-      &:before{
-        padding-bottom: 0%;
+      .title{
+        opacity: 0;
       }
       .player{
         // todo disable this shit in mobile
         opacity: 0;
+        &:before{
+          padding-bottom: 0;
+        }        
       }
     }
 
@@ -832,16 +849,17 @@ a:visited:hover {
     }
     .playerWrapper{
       &,
-      &:before,
-      .player{
+      .title,
+      .player,
+      .player:before{
         transition: all .5s ease-out;
       }
       &.loaded{
         animation: zoomIn 1s ease 1;        
       }
       &.loaded.unload{
+        animation: zoomOut .5s ease 1;        
         .player{
-          animation: zoomOut .5s ease 1;
         }
       }
     }

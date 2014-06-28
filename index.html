@@ -29,7 +29,7 @@
 
   <script id="playerTemplate" type="text/template">
     <p class="title"><%= title %></p>
-    <video x-webkit-airplay="allow" poster='https://docs.google.com/vt?id=<%= videoID %>&s=' class='wideRatio vjs-big-play-centered player video-js vjs-default-skin' width='auto' height='auto' preload='none' controls class='videoPlayer'>
+    <video x-webkit-airplay="allow" poster='https://docs.google.com/vt?id=<%= videoID %>&s=' class='wideRatio vjs-big-play-centered player video-js vjs-default-skin' width='auto' height='auto' preload='metadata' controls class='videoPlayer'>
       <% _.each(streams, function(stream){ %>
         <source src='<%= stream.url %>&c=web&cver=html5' type='<%= stream.type %>' data-res='<%= stream.quality %>'>
       <% }); %>

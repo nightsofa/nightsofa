@@ -425,7 +425,7 @@ class App.Views.SearchMovie extends Backbone.View
 
       length_seconds = @model.get('length_seconds') || 0
 
-      player = videojs @$el.find('video')[0], null, ->
+      player = videojs @$el.find('video')[0], {'nativeControlsForTouch': false}, ->
         console.log 'Views:SearchMovie::Render Player Loaded', length_seconds, this
         @duration length_seconds
         @trigger 'timeupdate'
